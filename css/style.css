@@ -1,23 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 
-.btn1 {
-    background: rgb(93, 143, 235);
-    color: white;
-    border: none;
-    border-radius: 10px;
-    padding: 10px 28px;
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
-    transition: all 0.3s ease;
+.gomb, .gomb:hover{
+    color: rgb(255, 255, 255);
+}
+.gomb{
+    background-color: rgb(70, 112, 175);
 }
 
-.btn1:hover {
-    background: rgb(60, 88, 145);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
-    transform: translateY(-2px);
+.gomb:hover{
+    background-color: rgb(49, 78, 122);
 }
 
 
