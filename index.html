@@ -6,60 +6,130 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="css/style.css">
 
 </head>
 
 <body>
-    <nav class="navbar bg-1 fg-2">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">ScooterFleet</a>
-            <a class="navbar-brand d-none d-sm-inline" href="#">Elektromos roller flottakezelő</a>
-        </div>
-    </nav>
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="card">
-                    <div class="card-body">
-                        This is some text within a card body.
-                    </div>
-                </div>
-                <div class="card w-75">
-                    <div class="card-body">
-                        <div>
-                            <p class="card-text">Rollerek száma</p>
-                            <p></p>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <p class="card-text">Elérhető</p>
-                                <p></p>
-                                <p class="card-text">Töltés alatt</p>
-                                <p></p>
-                            </div>
-                            <div class="col">
-                                <p class="card-text">Alacsony töltöttség</p>
-                                <p></p>
-                                <p class="card-text">Karbantartás alatt</p>
-                                <p></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <header></header>
+    <main>
+        <nav class="navbar navbar-expand rounded-3 px-3 mb-4" style="background-color: #172554;" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand fw-bold" href="#">
+                    ScooterFleet
+                </a>
+
+                <span class="navbar-text ms-auto d-none d-sm-inline">
+                    Elektromos roller flottakezelő
+                </span>
             </div>
-            <div class="col">
-                <div class="container-fluid p-0">
-                    <iframe title="Budapest térkép"
-                        src="https://www.openstreetmap.org/export/embed.html?bbox=19.00%2C47.47%2C19.10%2C47.53&layer=mapnik&marker=47.4979%2C19.0402"
-                        width="70%" height="400" style="border: 0;" loading="lazy">
-                    </iframe>
+        </nav>
+
+        <section class="container py-3">
+            <div class="row g-3 mb-4">
+                <div class="col-lg-4 col-md-5">
+                    <div class="card statisztika-kartya h-100">
+                        <div class="card-body">
+
+                            <h5 class="card-title">Rollerek száma</h5>
+                            <p id="osszes-roller" class="osszesito-szam">0</p>
+
+                            <div class="row g-2">
+
+                                <div class="col-6">
+                                    <div class="allapot-doboz">
+                                        <h6>Elérhető</h6>
+                                        <p id="elerheto-rollerek">0</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-6">
+                                    <div class="allapot-doboz">
+                                        <h6>Töltés alatt</h6>
+                                        <p id="toltes-alatt">0</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-6">
+                                    <div class="allapot-doboz">
+                                        <h6>Alacsony töltöttség</h6>
+                                        <p id="alacsony-toltottseg">0</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-6">
+                                    <div class="allapot-doboz">
+                                        <h6>Karbantartás alatt</h6>
+                                        <p id="karbantartas-alatt">0</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-            </div>
-        </div>
-    </div>
+
+                <div class="col-lg-8 col-md-7">
 
 
+                </div>
+
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-body p-3">
+                    <form >
+                        <div class="row g-2 align-items-end">
+                            <div class="col-lg-4 col-md-4">
+                                <label class="form-label">
+                                    Modell
+                                </label>
+                                <input type="text" class="form-control" placeholder="Roller modellje"
+                                    required>
+                            </div>
+
+                            <div class="col-lg-2 col-md-2">
+                                <label class="form-label">
+                                    Töltöttség (%)
+                                </label>
+                                <input type="number" id="toltottseg" class="form-control" placeholder="0–100" min="0"
+                                    max="100" step="1" required>
+                            </div>
+
+                            <div class="col-lg-3 col-md-3">
+                                <label class="form-label">
+                                    Körzet
+                                </label>
+                                <input type="text" class="form-control" placeholder="Körzet neve" required>
+                            </div>
+
+                            <div class="col-lg-3 col-md-3">
+                                <button type="button" class="btn btn-primary w-100">
+                                    Hozzáadás
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mt-2" id="megse-tartalom" hidden>
+                            <button type="button" class="btn btn-outline-secondary btn-sm" id="szerkesztes-megse">
+                                Mégse
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </section>
+
+
+    </main>
+
+    <footer></footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/script.js"></script>
 </body>
