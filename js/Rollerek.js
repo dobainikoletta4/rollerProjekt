@@ -1,4 +1,4 @@
-class Roller {
+class Rollerek {
     #azonosito;
     #modell;
     #toltottseg;
