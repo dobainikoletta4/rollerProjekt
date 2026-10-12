@@ -1,4 +1,4 @@
-const roller = new Roller(1, "Xiaomi", 100, "Belváros");
+var roller = new Roller(1, "Xiaomi", 100, "Belváros");
 
 console.assert(
     roller.getAzonosito() === 1,
