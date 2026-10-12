@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RollerBérlő</title>
+    <title>ScooterFleet</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="css/style.css">
@@ -19,7 +19,6 @@
                 <a class="navbar-brand fw-bold" href="#">
                     ScooterFleet
                 </a>
-
                 <span class="navbar-text ms-auto d-none d-sm-inline">
                     Elektromos roller flottakezelő
                 </span>
@@ -31,51 +30,42 @@
                 <div class="col-lg-4 col-md-5">
                     <div class="card statisztika-kartya h-100">
                         <div class="card-body">
-
                             <h5 class="card-title">Rollerek száma</h5>
                             <p id="osszes-roller" class="osszesito-szam">0</p>
-
                             <div class="row g-2">
-
                                 <div class="col-6">
                                     <div class="allapot-doboz">
                                         <h6>Elérhető</h6>
                                         <p id="elerheto-rollerek">0</p>
                                     </div>
                                 </div>
-
                                 <div class="col-6">
                                     <div class="allapot-doboz">
                                         <h6>Töltés alatt</h6>
                                         <p id="toltes-alatt">0</p>
                                     </div>
                                 </div>
-
                                 <div class="col-6">
                                     <div class="allapot-doboz">
                                         <h6>Alacsony töltöttség</h6>
                                         <p id="alacsony-toltottseg">0</p>
                                     </div>
                                 </div>
-
                                 <div class="col-6">
                                     <div class="allapot-doboz">
                                         <h6>Karbantartás alatt</h6>
                                         <p id="karbantartas-alatt">0</p>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
-
                 </div>
 
                 <div class="col-lg-8 col-md-7">
 
 
                 </div>
-
             </div>
 
             <div class="card mb-4">
@@ -88,7 +78,6 @@
                                 </label>
                                 <input type="text" class="form-control" placeholder="Roller modellje" required>
                             </div>
-
                             <div class="col-lg-2 col-md-2">
                                 <label class="form-label">
                                     Töltöttség (%)
@@ -96,72 +85,41 @@
                                 <input type="number" id="toltottseg" class="form-control" placeholder="0–100" min="0"
                                     max="100" step="1" required>
                             </div>
-
                             <div class="col-lg-3 col-md-3">
                                 <label class="form-label">
                                     Körzet
                                 </label>
                                 <input type="text" class="form-control" placeholder="Körzet neve" required>
                             </div>
-
                             <div class="col-lg-3 col-md-3">
                                 <button type="button" class="btn gomb w-100">
                                     Hozzáadás
                                 </button>
                             </div>
                         </div>
-
                     </form>
-
                 </div>
             </div>
-
+            <div class="d-flex flex-wrap gap-2 mb-3">
+                <button type="button" class="btn btn-outline-danger kritikus-szuro">
+                    20% alatti akkumulátor
+                </button>
+            </div>
             <div class="table-responsive">
                 <table class="table align-middle mb-0">
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Modell</th>
-                            <th>Toltottség</th>
+                            <th>Töltöttség</th>
                             <th>Állapot</th>
-                            <th>Korzet neve</th>
+                            <th>Körzet neve</th>
                             <th>Utoljára aktív</th>
                             <th>Műveletek</th>
                         </tr>
                     </thead>
-                    <tbody id="tableBody">
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Kukurin g2</td>
-                            <td>100%</td>
-                            <td>Jó</td>
-                            <td>Vadász utca 12.</td>
-                            <td>1 perce</td>
-                            <td>
-                                <button type="button" class="btn btn-sm btn-outline-danger me-1" title="Törlés">
-                                    <i class="bi bi-trash-fill"></i>
-                                </button>
-                                <button type="button" class="btn btn-sm btn-outline-success" title="Szerkesztés">
-                                    <i class="bi bi-pencil-fill"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Kukurin g2</td>
-                            <td>100%</td>
-                            <td>Jó</td>
-                            <td>Vadász utca 12.</td>
-                            <td>1 perce</td>
-                            <td>
-                                <button type="button" class="btn btn-sm btn-outline-danger me-1" title="Törlés">
-                                    <i class="bi bi-trash-fill"></i>
-                                </button>
-                                <button type="button" class="btn btn-sm btn-outline-success" title="Szerkesztés">
-                                    <i class="bi bi-pencil-fill"></i>
-                                </button>
-                            </td>
-                        </tr>
+                    <tbody id="tbody">
+                        
                     </tbody>
                 </table>
             </div>
@@ -170,27 +128,23 @@
                 <div class="modal-dialog modal-dialog-centered modal-sm">
                     <div class="modal-content">
                         <div class="modal-body">
-                            <p class="mb-0">Biztosan torlod a <b id="Torles"></b> rollert?</p>
+                            <p class="mb-0">Biztosan törlöd a <b id="Torles"></b> rollert?</p>
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Mégse</button>
-                            <button class="btn btn-danger" id="TorlesMegerosites">Torlés</button>
+                            <button class="btn btn-danger" id="TorlesMegerosites">Törlés</button>
                         </div>
                     </div>
                 </div>
-
-
         </section>
-
-
-
-
     </main>
 
     <footer></footer>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/Rollerek.js"></script>
+    <script src="js/RollerTeszt.js"></script>
     <script src="js/script.js"></script>
 </body>
 
