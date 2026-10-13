@@ -12,11 +12,11 @@ console.assert(roller.getAllapot() === "Jó","Hiba: Az állapot nem megfelelő!"
 
 roller.setToltottseg(60);
 
-console.assert(roller.getAllapot() === "Közepes","Hiba, Az állapotnak Közepesnek kell lennie!");
+console.assert(roller.getAllapot() === "Közepes","Hiba: Az állapotnak Közepesnek kell lennie!");
 
 roller.setToltottseg(-10);
 
-console.assert(roller.getToltottseg() == 0,"Hiba, A töltöttség nem lehet 0% alatt!");
+console.assert(roller.getToltottseg() == 0,"Hiba: A töltöttség nem lehet 0% alatt!");
 
 console.assert(roller.getAllapot() === "Kritikus","Hiba: Az állapotnak Kritikusnak kell lennie!");
 

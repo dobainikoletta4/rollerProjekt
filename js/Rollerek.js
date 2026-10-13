@@ -5,7 +5,7 @@ class Rollerek {
     #korzet;
     #allapot;
 
-    constructor(azonosito, modell, toltottseg = 100, korzet) {
+    constructor(azonosito, modell, toltottseg = 100, korzet){
         this.setAzonosito(azonosito);
         this.setModell(modell);
         this.setToltottseg(toltottseg);
@@ -16,53 +16,53 @@ class Rollerek {
         this.#azonosito = azonosito;
     }
 
-    setModell(modell) {
+    setModell(modell){
         this.#modell = modell;
     }
 
-    setToltottseg(toltottseg) {
-        if (toltottseg < 0) {
+    setToltottseg(toltottseg){
+        if (toltottseg < 0){
             toltottseg = 0;
         }
 
-        if (toltottseg > 100) {
+        if (toltottseg > 100){
             toltottseg = 100;
         }
 
         this.#toltottseg = toltottseg;
 
-        if (toltottseg >= 80) {
+        if (toltottseg >= 80){
             this.#allapot = "Jó";
-        } else if (toltottseg >= 50) {
+        } else if (toltottseg >= 50){
             this.#allapot = "Közepes";
-        } else if (toltottseg >= 21) {
+        } else if (toltottseg >= 21){
             this.#allapot = "Gyenge";
         } else {
             this.#allapot = "Kritikus";
         }
     }
 
-    setKorzet(korzet) {
+    setKorzet(korzet){
         this.#korzet = korzet;
     }
 
-    getAzonosito() {
+    getAzonosito(){
         return this.#azonosito;
     }
 
-    getModell() {
+    getModell(){
         return this.#modell;
     }
 
-    getToltottseg() {
+    getToltottseg(){
         return this.#toltottseg;
     }
 
-    getKorzet() {
+    getKorzet(){
         return this.#korzet;
     }
 
-    getAllapot() {
+    getAllapot(){
         return this.#allapot;
     }
 

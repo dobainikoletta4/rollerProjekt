@@ -28,33 +28,33 @@
         <section class="container py-3">
             <div class="row g-3 mb-4">
                 <div class="col-lg-4 col-md-5">
-                    <div class="card statisztika-kartya h-100">
+                    <div class="card h-100">
                         <div class="card-body">
                             <h5 class="card-title">Rollerek száma</h5>
-                            <p id="osszes-roller" class="osszesito-szam">0</p>
+                            <p>0</p>
                             <div class="row g-2">
                                 <div class="col-6">
-                                    <div class="allapot-doboz">
+                                    <div>
                                         <h6>Elérhető</h6>
-                                        <p id="elerheto-rollerek">0</p>
+                                        <p>0</p>
                                     </div>
                                 </div>
                                 <div class="col-6">
-                                    <div class="allapot-doboz">
+                                    <div>
                                         <h6>Töltés alatt</h6>
-                                        <p id="toltes-alatt">0</p>
+                                        <p>0</p>
                                     </div>
                                 </div>
                                 <div class="col-6">
-                                    <div class="allapot-doboz">
+                                    <div>
                                         <h6>Alacsony töltöttség</h6>
-                                        <p id="alacsony-toltottseg">0</p>
+                                        <p>0</p>
                                     </div>
                                 </div>
                                 <div class="col-6">
-                                    <div class="allapot-doboz">
+                                    <div>
                                         <h6>Karbantartás alatt</h6>
-                                        <p id="karbantartas-alatt">0</p>
+                                        <p>0</p>
                                     </div>
                                 </div>
                             </div>
@@ -73,37 +73,27 @@
                     <form>
                         <div class="row g-2 align-items-end">
                             <div class="col-lg-4 col-md-4">
-                                <label class="form-label">
-                                    Modell
-                                </label>
+                                <label class="form-label">Modell</label>
                                 <input type="text" class="form-control" placeholder="Roller modellje" required>
                             </div>
                             <div class="col-lg-2 col-md-2">
-                                <label class="form-label">
-                                    Töltöttség (%)
-                                </label>
-                                <input type="number" id="toltottseg" class="form-control" placeholder="0–100" min="0"
+                                <label class="form-label">Töltöttség (%)</label>
+                                <input type="number" class="form-control" placeholder="0–100" min="0"
                                     max="100" step="1" required>
                             </div>
                             <div class="col-lg-3 col-md-3">
-                                <label class="form-label">
-                                    Körzet
-                                </label>
+                                <label class="form-label">Körzet</label>
                                 <input type="text" class="form-control" placeholder="Körzet neve" required>
                             </div>
                             <div class="col-lg-3 col-md-3">
-                                <button type="button" class="btn gomb w-100">
-                                    Hozzáadás
-                                </button>
+                                <button type="button" class="btn gomb w-100">Hozzáadás</button>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
-            <div class="d-flex flex-wrap gap-2 mb-3">
-                <button type="button" class="btn btn-outline-danger kritikus-szuro">
-                    20% alatti akkumulátor
-                </button>
+            <div class="d-flex mb-3">
+                <button type="button" class="btn btn-danger">20% alatti töltöttség</button>
             </div>
             <div class="table-responsive">
                 <table class="table align-middle mb-0">
