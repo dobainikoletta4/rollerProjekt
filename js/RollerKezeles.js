@@ -23,7 +23,7 @@ class RollerKezeles {
         return roller;
     }
 
-    getEgy(azonosito) {
+    getEgyRoller(azonosito) {
         for (var i = 0; i < this.#rollerek.length; i++) {
             if (this.#rollerek[i].getAzonosito() === azonosito) {
                 return this.#rollerek[i];
@@ -42,7 +42,7 @@ class RollerKezeles {
 }
 
     frissitAllapot(azonosito,ujAllapot) {
-        var roller = this.getEgy(azonosito);
+        var roller = this.getEgyRoller(azonosito);
         if (roller === null || !this.#allapotok.includes(ujAllapot)) {
             return false;
         }
@@ -52,7 +52,7 @@ class RollerKezeles {
     }
     
     frissitToltottseg(azonosito, ujToltottseg) {
-        var roller = this.getEgy(azonosito);
+        var roller = this.getEgyRoller(azonosito);
 
         if (roller === null || isNaN(Number(ujToltottseg))) {
             return false;
