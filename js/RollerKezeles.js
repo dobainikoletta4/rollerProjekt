@@ -50,4 +50,58 @@ class RollerKezeles {
         roller.setAllapot(ujAllapot);
         return true;
     }
+    
+    frissitToltottseg(azonosito, ujToltottseg) {
+        var roller = this.getEgy(azonosito);
+
+        if (roller === null || isNaN(Number(ujToltottseg))) {
+            return false;
+        }
+
+        roller.setToltottseg(Number(ujToltottseg));
+        return true;
+    }
+
+    torol(azonosito) {
+        for (var i = 0; i < this.#rollerek.length; i++) {
+            if (this.#rollerek[i].getAzonosito() === azonosito) {
+                this.#rollerek.splice(i, 1);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    getKritikusAllappot() {
+        var kritikus = [];
+
+        for (var i = 0; i < this.#rollerek.length; i++) {
+            if (this.#rollerek[i].getToltottseg() < 20) {
+                kritikus.push(this.#rollerek[i]);
+            }
+        }
+        return kritikus;
+    }
+
+    getDarab(allapot) {
+        var db = 0;
+
+        for (var i = 0; i < this.#rollerek.length; i++) {
+            if (this.#rollerek[i].getAllapot() === allapot) {
+                db++;
+            }
+        }
+        return db;
+    }
+
+    getStatisztika() {
+        return {
+            osszes: this.#rollerek.length,
+            szabad: this.getDarab("Szabad"),
+            toltesAlatt: this.getDarab("Töltőn"),
+            berlesAlatt: this.getDarab("Bérlés alatt"),
+            karbantartas: this.getDarab("Karbantartás alatt"),
+            alacsony: this.getKritikusAllappot().length
+        };
+    }
 }
