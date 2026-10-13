@@ -4,12 +4,15 @@ class Rollerek {
     #toltottseg;
     #korzet;
     #allapot;
+    #kilometer;
 
-    constructor(azonosito, modell, toltottseg = 100, korzet){
+    constructor(azonosito, modell, toltottseg = 100, korzet, allapot, kilometer){
         this.setAzonosito(azonosito);
         this.setModell(modell);
         this.setToltottseg(toltottseg);
         this.setKorzet(korzet);
+        this.setAllapot(allapot);
+        this.setKilometer(kilometer);
     }
 
     setAzonosito(azonosito){
@@ -30,20 +33,18 @@ class Rollerek {
         }
 
         this.#toltottseg = toltottseg;
-
-        if (toltottseg >= 80){
-            this.#allapot = "Jó";
-        } else if (toltottseg >= 50){
-            this.#allapot = "Közepes";
-        } else if (toltottseg >= 21){
-            this.#allapot = "Gyenge";
-        } else {
-            this.#allapot = "Kritikus";
-        }
     }
 
     setKorzet(korzet){
         this.#korzet = korzet;
+    }
+
+    setAllapot(allapot){
+        this.#allapot = allapot;
+    }
+
+    setKilometer(kilometer){
+        this.#kilometer = kilometer;
     }
 
     getAzonosito(){
@@ -64,6 +65,10 @@ class Rollerek {
 
     getAllapot(){
         return this.#allapot;
+    }
+
+    getKilometer(){
+        return this.#kilometer;
     }
 
 }
