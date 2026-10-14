@@ -105,13 +105,13 @@ function terkepKiir() {
 
 function statisztikaKiir() {
     var stat = kezeles.getStatisztika();
-    var kicsik = document.querySelectorAll(".col-6 p");
+    var kicsiszamok = document.querySelectorAll(".col-6 p");
  
     document.querySelector(".p1").textContent = stat.osszes;
-    kicsik[0].textContent = stat.szabad;
-    kicsik[1].textContent = stat.toltesAlatt;
-    kicsik[2].textContent = stat.alacsony;
-    kicsik[3].textContent = stat.karbantartas;
+    kicsiszamok[0].textContent = stat.szabad;
+    kicsiszamok[1].textContent = stat.toltesAlatt;
+    kicsiszamok[2].textContent = stat.alacsony;
+    kicsiszamok[3].textContent = stat.karbantartas;
 }
 
 function kiir() {
@@ -131,6 +131,7 @@ function kiir() {
                 <td>${roller.getKilometer()} km</td>
 
                 <td><i class="bi bi-trash3-fill text-danger"
+                       data-bs-toggle="modal" data-bs-target="#TorlesModal"
                        onclick="torol(${roller.getAzonosito()})">
                 </i></td>
             </tr>`;
@@ -181,3 +182,25 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 //
+
+
+var torlendoId = null;
+
+function torol(id) {
+    var roller = kezeles.getEgyRoller(id);
+    if (roller === null) return;
+ 
+    torlendoId = id;
+    document.querySelector("#Torles").textContent =
+        roller.getModell();
+}
+ 
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelector("#TorlesMegerosites").addEventListener("click", function () {
+        if (torlendoId === null) return;
+ 
+        kezeles.torol(torlendoId);
+        torlendoId = null;
+        kiir();
+    });
+});
