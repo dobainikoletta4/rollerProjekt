@@ -27,7 +27,7 @@
 
         <section class="container py-3">
             <div class="row g-3 mb-4">
-                <div class="col-lg-4 col-md-5">
+                <div class="col-lg-3 col-md-4">
                     <div class="card h-100">
                         <div class="card-body">
                             <h5 class="card-title">Rollerek száma</h5>
@@ -62,9 +62,8 @@
                     </div>
                 </div>
 
-                <div class="col-lg-8 col-md-7">
-
-
+                <div class="col-lg-9 col-md-8">
+                    <div id="terkep" style="height: 350px; width: 100%; border-radius: 8px;"></div> 
                 </div>
             </div>
 
@@ -74,19 +73,19 @@
                         <div class="row g-2 align-items-end">
                             <div class="col-lg-4 col-md-4">
                                 <label class="form-label">Modell</label>
-                                <input type="text" class="form-control" placeholder="Roller modellje" required>
+                                <input type="text" class="form-control modell" placeholder="Roller modellje" required>
                             </div>
                             <div class="col-lg-2 col-md-2">
                                 <label class="form-label">Töltöttség (%)</label>
-                                <input type="number" class="form-control" placeholder="0–100" min="0"
-                                    max="100" step="1" required>
+                                <input type="number" class="form-control toltottseg" placeholder="0–100" min="0" max="100" step="1"
+                                    required>
                             </div>
                             <div class="col-lg-3 col-md-3">
                                 <label class="form-label">Körzet</label>
-                                <input type="text" class="form-control" placeholder="Körzet neve" required>
+                                <input type="text" class="form-control korzet" placeholder="Körzet neve" required>
                             </div>
                             <div class="col-lg-3 col-md-3">
-                                <button type="button" class="btn gomb w-100">Hozzáadás</button>
+                                <button type="button" class="btn gomb w-100 regisztralas">Regisztálás</button>
                             </div>
                         </div>
                     </form>
@@ -109,7 +108,7 @@
                         </tr>
                     </thead>
                     <tbody id="tbody">
-                        
+
                     </tbody>
                 </table>
             </div>

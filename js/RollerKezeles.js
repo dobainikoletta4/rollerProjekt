@@ -33,13 +33,13 @@ class RollerKezeles {
     }
 
     getOsszesroller() {
-    var lista = [];
+        var lista = [];
 
-    for (var i = 0; i < this.#rollerek.length; i++) {
-        lista.push(this.#rollerek[i]);
+        for (var i = 0; i < this.#rollerek.length; i++) {
+            lista.push(this.#rollerek[i]);
+        }
+        return lista;
     }
-    return lista;
-}
 
     frissitAllapot(azonosito,ujAllapot) {
         var roller = this.getEgyRoller(azonosito);
