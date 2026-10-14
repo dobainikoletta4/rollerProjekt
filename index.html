@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ScooterFleet</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="css/style.css">
@@ -31,29 +32,29 @@
                     <div class="card h-100">
                         <div class="card-body">
                             <h5 class="card-title">Rollerek száma</h5>
-                            <p>0</p>
+                            <p class="p1">0</p>
                             <div class="row g-2">
                                 <div class="col-6">
                                     <div>
-                                        <h6>Elérhető</h6>
+                                        <h6 class="text-success">Elérhető</h6>
                                         <p>0</p>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div>
-                                        <h6>Töltés alatt</h6>
+                                        <h6 class="text-primary">Töltés alatt</h6>
                                         <p>0</p>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div>
-                                        <h6>Alacsony töltöttség</h6>
+                                        <h6 class="text-warning">Alacsony töltöttség</h6>
                                         <p>0</p>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div>
-                                        <h6>Karbantartás alatt</h6>
+                                        <h6 class="text-danger">Karbantartás alatt</h6>
                                         <p>0</p>
                                     </div>
                                 </div>
@@ -72,7 +73,7 @@
                     <form>
                         <div class="row g-2 align-items-end">
                             <div class="col-lg-4 col-md-4">
-                                <label class="form-label">Modell</label>
+                                <label class="form-label ">Modell </label>
                                 <input type="text" class="form-control modell" placeholder="Roller modellje" required>
                             </div>
                             <div class="col-lg-2 col-md-2">
@@ -104,7 +105,7 @@
                             <th>Állapot</th>
                             <th>Körzet neve</th>
                             <th>Megtett kilométer</th>
-                            <th>Műveletek</th>
+                            <th>Törlés</th>
                         </tr>
                     </thead>
                     <tbody id="tbody">
@@ -125,8 +126,8 @@
                         </div>
                     </div>
                 </div>
+            </div>
         </section>
-    </main>
 
     <footer></footer>
 

@@ -102,36 +102,43 @@ function terkepKiir() {
         markerek.addLayer(marker);
     }
 }
-//
+
+function statisztikaKiir() {
+    var stat = kezeles.getStatisztika();
+    var kicsik = document.querySelectorAll(".col-6 p");
+ 
+    document.querySelector(".p1").textContent = stat.osszes;
+    kicsik[0].textContent = stat.szabad;
+    kicsik[1].textContent = stat.toltesAlatt;
+    kicsik[2].textContent = stat.alacsony;
+    kicsik[3].textContent = stat.karbantartas;
+}
 
 function kiir() {
     var tbody = document.querySelector("#tbody");
     tbody.innerHTML = "";
-
+ 
     var rollerek = kezeles.getOsszesroller();
-
+ 
     for (var i = 0; i < rollerek.length; i++) {
         var roller = rollerek[i];
-
-        tbody.innerHTML += `
-            <tr>
-                <th>${roller.getAzonosito()}</th>
+ 
+        tbody.innerHTML += `<tr> <th>${roller.getAzonosito()}</th>
                 <td>${roller.getModell()}</td>
                 <td>${roller.getToltottseg()}%</td>
                 <td>${roller.getAllapot()}</td>
                 <td>${roller.getKorzet()}</td>
                 <td>${roller.getKilometer()} km</td>
-                <td>
-                    <i class="bi bi-trash3-fill text-danger"
+
+                <td><i class="bi bi-trash3-fill text-danger"
                        onclick="torol(${roller.getAzonosito()})">
-                    </i>
-                </td>
-            </tr>
-        `;
+                </i></td>
+            </tr>`;
     }
+ 
+    statisztikaKiir();
     terkepKiir();
 }
-
 
 function regisztral() {
     var modell = document.querySelector(".modell");
@@ -174,5 +181,3 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 //
-
-
