@@ -1,5 +1,5 @@
 var kezeles = new RollerKezeles();
-
+var csakHuszSzazalekAlattiRoller = false;
 // AI
 var markerek;
 var terkep;
@@ -118,8 +118,16 @@ function kiir() {
     var tbody = document.querySelector("#tbody");
     tbody.innerHTML = "";
  
-    var rollerek = kezeles.getOsszesroller();
- 
+    var rollerek;
+
+    if (csakHuszSzazalekAlattiRoller) {
+        rollerek = kezeles.getKritikusAllappot();
+    } else {
+        rollerek = kezeles.getOsszesroller();
+    }
+
+    
+
     for (var i = 0; i < rollerek.length; i++) {
         var roller = rollerek[i];
  
@@ -180,8 +188,22 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelector(".regisztralas").addEventListener("click", function() {
         regisztral();
     });
-});
 //
+    var HuszSzazalekGomb = document.querySelector(".d-flex .btn-danger");
+
+    HuszSzazalekGomb.addEventListener('click', () => {
+        if (csakHuszSzazalekAlattiRoller) {
+            csakHuszSzazalekAlattiRoller = false;
+            HuszSzazalekGomb.textContent = "20% alatti töltöttség";
+        } else {
+            csakHuszSzazalekAlattiRoller = true;
+            HuszSzazalekGomb.textContent = "Összes roller mutatása";
+        }
+
+        kiir();
+    });
+});
+
 
 
 var torlendoId = null;
@@ -195,8 +217,8 @@ function torol(id) {
         roller.getModell();
 }
  
-document.addEventListener("DOMContentLoaded", function () {
-    document.querySelector("#TorlesMegerosites").addEventListener("click", function () {
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelector("#TorlesMegerosites").addEventListener('click', () => {
         if (torlendoId === null) return;
  
         kezeles.torol(torlendoId);
