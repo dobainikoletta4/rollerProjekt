@@ -144,7 +144,7 @@ function kiir() {
 
                 <td><i class="bi bi-trash3-fill text-danger"
                        data-bs-toggle="modal" data-bs-target="#TorlesModal"
-                       onclick="torol(${rollerek.getAzonosito()})">
+                       onclick=torol(${roller.getAzonosito()})>
                 </i>
                 <i class="bi bi-pencil-fill text-primary ms-4" onclick="szerkesztes(${roller.getAzonosito()})"></i></td>
             </tr>`;
