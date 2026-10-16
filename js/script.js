@@ -102,11 +102,12 @@ function terkepKiir() {
         markerek.addLayer(marker);
     }
 }
+//
 
 function statisztikaKiir() {
     var stat = kezeles.getStatisztika();
     var kicsiszamok = document.querySelectorAll(".col-6 p");
- 
+
     document.querySelector(".p1").textContent = stat.osszes;
     kicsiszamok[0].textContent = stat.szabad;
     kicsiszamok[1].textContent = stat.toltesAlatt;
@@ -117,7 +118,7 @@ function statisztikaKiir() {
 function kiir() {
     var tbody = document.querySelector("#tbody");
     tbody.innerHTML = "";
- 
+
     var rollerek;
 
     if (csakHuszSzazalekAlattiRoller) {
@@ -126,25 +127,29 @@ function kiir() {
         rollerek = kezeles.getOsszesroller();
     }
 
-    
+
 
     for (var i = 0; i < rollerek.length; i++) {
         var roller = rollerek[i];
- 
+
+
         tbody.innerHTML += `<tr> <th>${roller.getAzonosito()}</th>
                 <td>${roller.getModell()}</td>
-                <td>${roller.getToltottseg()}%</td>
+                <td><div class="progress" role="progressbar" aria-valuenow="${roller.getToltottseg()}" aria-valuemin="0" aria-valuemax="100">
+                <div class="progress-bar" style="width: ${roller.getToltottseg()}%">${roller.getToltottseg()}%</div>
+                </div></td>
                 <td>${roller.getAllapot()}</td>
                 <td>${roller.getKorzet()}</td>
                 <td>${roller.getKilometer()} km</td>
 
                 <td><i class="bi bi-trash3-fill text-danger"
                        data-bs-toggle="modal" data-bs-target="#TorlesModal"
-                       onclick="torol(${roller.getAzonosito()})">
-                </i></td>
+                       onclick="torol(${rollerek.getAzonosito()})">
+                </i>
+                <i class="bi bi-pencil-fill text-primary ms-4" onclick="szerkesztes(${roller.getAzonosito()})"></i></td>
             </tr>`;
     }
- 
+
     statisztikaKiir();
     terkepKiir();
 }
@@ -181,14 +186,14 @@ function regisztral() {
     kiir();
 }
 //AI
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     terkepInditasa();
     kiir();
 
-    document.querySelector(".regisztralas").addEventListener("click", function() {
+    document.querySelector(".regisztralas").addEventListener("click", () => {
         regisztral();
     });
-//
+    //
     var HuszSzazalekGomb = document.querySelector(".d-flex .btn-danger");
 
     HuszSzazalekGomb.addEventListener('click', () => {
@@ -203,24 +208,42 @@ document.addEventListener("DOMContentLoaded", function() {
         kiir();
     });
 });
+//
+szerkesztendo = -1;
 
+document.querySelector(".regisztralas").addEventListener("click", () => {
+    document.querySelector(".regisztralas").classList.remove("regisztralas");
+    document.querySelector(".gomb").classList.add("mentes");
+});
 
+document.querySelector(".mentes").addEventListener("click", () => {
+    var ujmodell = document.querySelector(".modell");
+    var ujtoltottseg = document.querySelector(".toltottseg");
+    var ujkorzet = document.querySelector(".korzet");
+    var roller = kezeles.getEgyRoller(id);
+
+    roller[szerkesztendo].setModell(ujmodell.value);
+    roller[szerkesztendo].setToltottseg(ujtoltottseg.value);
+    roller[szerkesztendo].setKorzet(ujkorzet.value);
+
+    kiir();
+})
 
 var torlendoId = null;
 
 function torol(id) {
     var roller = kezeles.getEgyRoller(id);
     if (roller === null) return;
- 
+
     torlendoId = id;
     document.querySelector("#Torles").textContent =
         roller.getModell();
 }
- 
+
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelector("#TorlesMegerosites").addEventListener('click', () => {
         if (torlendoId === null) return;
- 
+
         kezeles.torol(torlendoId);
         torlendoId = null;
         kiir();

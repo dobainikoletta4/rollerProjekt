@@ -41,7 +41,7 @@ class RollerKezeles {
         return lista;
     }
 
-    frissitAllapot(azonosito,ujAllapot) {
+    frissitAllapot(azonosito, ujAllapot) {
         var roller = this.getEgyRoller(azonosito);
         if (roller === null || !this.#allapotok.includes(ujAllapot)) {
             return false;
@@ -50,7 +50,7 @@ class RollerKezeles {
         roller.setAllapot(ujAllapot);
         return true;
     }
-    
+
     frissitToltottseg(azonosito, ujToltottseg) {
         var roller = this.getEgyRoller(azonosito);
 
@@ -70,6 +70,21 @@ class RollerKezeles {
             }
         }
         return false;
+    }
+
+    szerkesztes(azonosito) {
+        var modell = rollerek.getModell();
+        var toltottseg = rollerek.getToltottseg();
+        var korzet = rollerek.getKorzet();
+        var rollerek = kezeles.getOsszesroller();
+        var mentes = document.querySelector(".regisztralas");
+
+        szerkesztendo = rollerek.getAzonosito();
+
+        modell.value = rollerek[szerkesztendo].getModell();
+        toltottseg.value = rollerek[szerkesztendo].getToltottseg();
+        korzet.value = rollerek[szerkesztendo].getKorzet();
+        mentes.innerHTML = "Mentés";
     }
 
     getKritikusAllappot() {
