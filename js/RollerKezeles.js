@@ -12,7 +12,7 @@ class RollerKezeles {
         return this.#allapotok;
     }
 
-    hozzaad(modell, toltottseg, korzet, allapot = "Szabad", kilometer = 0) {
+    hozzaad(modell, toltottseg = 100, korzet, allapot = "Bérlés alatt", kilometer = 0) {
         if (!this.#allapotok.includes(allapot)) {
             return null;
         }
@@ -70,21 +70,6 @@ class RollerKezeles {
             }
         }
         return false;
-    }
-
-    szerkesztes(azonosito) {
-        var modell = rollerek.getModell();
-        var toltottseg = rollerek.getToltottseg();
-        var korzet = rollerek.getKorzet();
-        var rollerek = kezeles.getOsszesroller();
-        var mentes = document.querySelector(".regisztralas");
-
-        szerkesztendo = rollerek.getAzonosito();
-
-        modell.value = rollerek[szerkesztendo].getModell();
-        toltottseg.value = rollerek[szerkesztendo].getToltottseg();
-        korzet.value = rollerek[szerkesztendo].getKorzet();
-        mentes.innerHTML = "Mentés";
     }
 
     getKritikusAllappot() {

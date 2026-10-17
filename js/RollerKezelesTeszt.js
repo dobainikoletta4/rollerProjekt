@@ -8,7 +8,7 @@ console.assert(kezeles.getOsszesroller().length == 3, "Hiba: 3 rollernek kell le
 
 console.assert(r1.getAzonosito() == 1, "Hiba: Az első roller azonosítója nem 1!");
 
-console.assert(r1.getAllapot() === "Szabad", "Hiba: Az alapértelmezett állapot nem szabad!");
+console.assert(r1.getAllapot() === "Bérlés alatt", "Hiba: Az alapértelmezett állapot nem bérlés alatt!");
 
 console.assert(kezeles.hozzaad("Hibás", 50, "Főtér", "Ismeretlen") === null, "Hiba: Érvénytelen állapottal nem vehető fel roller, nullt kell kapnunk");
 
@@ -35,7 +35,6 @@ console.assert(kezeles.getKritikusAllappot().length == 1, "Hiba: 1 kritikus roll
 console.assert(kezeles.getKritikusAllappot()[0].getAzonosito() == 2, "Hiba: Rossz roller van a kritikus listában!");
 
 
-//statisztika tesztelés
 var stat = kezeles.getStatisztika();
 
 console.assert(stat.osszes == 3, "Hiba: Az összes roller száma nem megfelelő!");
@@ -50,7 +49,7 @@ console.assert(stat.karbantartas == 1, "Hiba: A karbantartás alatti rollerek sz
 
 console.assert(stat.alacsony == 1, "Hiba: Az alacsony töltöttségű rollerek száma nem megfelelő, csak r2 kritikus!");
 
-//törlés tesztelés
+
 console.assert(kezeles.torol(2) === true, "Hiba: A törlés sikertelen!");
 
 console.assert(kezeles.getOsszesroller().length == 2, "Hiba: Törlés után 2 rollernek kell maradnia!");

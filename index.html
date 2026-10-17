@@ -73,19 +73,14 @@
                     <form>
                         <div class="row g-2 align-items-end">
                             <div class="col-lg-4 col-md-4">
-                                <label class="form-label ">Modell </label>
+                                <label class="form-label fw-bold">Modell </label>
                                 <input type="text" class="form-control modell" placeholder="Roller modellje" required>
                             </div>
-                            <div class="col-lg-2 col-md-2">
-                                <label class="form-label">Töltöttség (%)</label>
-                                <input type="number" class="form-control toltottseg" placeholder="0–100" min="0"
-                                    max="100" step="1" required>
-                            </div>
-                            <div class="col-lg-3 col-md-3">
-                                <label class="form-label">Körzet</label>
+                            <div class="col-lg-4 col-md-4">
+                                <label class="form-label fw-bold">Körzet</label>
                                 <input type="text" class="form-control korzet" placeholder="Körzet neve" required>
                             </div>
-                            <div class="col-lg-3 col-md-3">
+                            <div class="col-lg-4 col-md-4">
                                 <button type="button" class="btn gomb w-100 regisztralas">Regisztrálás</button>
                             </div>
                         </div>
@@ -95,8 +90,7 @@
             <div class="d-flex mb-3">
                 <button type="button" class="btn btn-danger me-3">20% alatti töltöttség</button>
                 <button type="button" class="btn btn-success me-3" id="feltoltesGomb">Rollerek feltöltése</button>
-                <button type="button" class="btn btn-warning" id="javitasGomb">Karbantartás alatti rollerek
-                    javítása</button>
+                <button type="button" class="btn btn-warning" id="javitasGomb">Karbantartás alatti rollerek javítása</button>
             </div>
             <div class="table-responsive">
                 <table class="table align-middle mb-0">
@@ -131,15 +125,49 @@
                     </div>
                 </div>
             </div>
+            <div class="modal" tabindex="-1" id="sikeresModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header bg-success text-white">
+                            <h5 class="modal-title">Sikeres regisztrálás!</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>A roller regisztrálása sikeresen megtörtént.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" tabindex="-1" id="sikeresModal2">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header bg-primary text-white">
+                            <h5 class="modal-title">Sikeres szerkesztés!</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>A roller szerkesztése sikeresen megtörtént.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <footer>&copy;ScooterFleet <br> Minden jog fenntartva!
+        <footer class="text-center">
+            &copy;ScooterFleet <br> Minden jog fenntartva!
         </footer>
 
         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
         <script src="js/bootstrap.bundle.min.js"></script>
-        <script src="js/RollerKezeles.js"></script>
         <script src="js/Rollerek.js"></script>
+        <script src="js/RollerKezeles.js"></script>
+        <script src="js/RollerKezelesTeszt.js"></script>
         <script src="js/RollerTeszt.js"></script>
         <script src="js/script.js"></script>
 </body>
