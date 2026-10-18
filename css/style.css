@@ -38,7 +38,7 @@ background: linear-gradient(90deg, rgb(36, 65, 133) 0%, rgb(88, 42, 158) 100%);
     border: 1px solid rgb(218, 225, 237);
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(28, 58, 128, 0.06);
-    overflow: hidden;
+    overflow: auto;
 }
 
 .table thead th {
