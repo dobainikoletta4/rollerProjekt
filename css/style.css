@@ -1,70 +1,170 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 
-.bi-trash3-fill {
-    cursor: pointer;
-}
-.gomb, .gomb:hover{
-    color: rgb(255, 255, 255);
-}
-.gomb{
-    background-color: rgb(70, 112, 175);
+body {
+    background-color: rgb(238, 242, 248);
+    font-family: 'Lato', sans-serif;
+    margin: 0;
 }
 
-.gomb:hover{
-    background-color: rgb(49, 78, 122);
-}
-h5, .p1 {
-  text-align: center;
-}
-.col-6 h6, h5, p, .p1 {
-    font-weight: 700;
-}
-main{
+main {
     padding-bottom: 36px;
 }
-body{
-    background-color: rgb(238, 242, 248);
-    background-size: 22px 22px;
-}
-.navbar{
-    background: #1c3a80;
-background: linear-gradient(90deg, rgb(36, 65, 133) 0%, rgb(88, 42, 158) 100%);
 
+.navbar {
+    background: linear-gradient(90deg,
+            rgb(36, 65, 133) 0%,
+            rgb(88, 42, 158) 100%);
 }
 
+.gomb,
+.gomb:hover {
+    color: rgb(255, 255, 255);
+}
+
+.gomb {
+    background-color: rgb(70, 112, 175);
+    border: none;
+}
+
+.gomb:hover {
+    background-color: rgb(49, 78, 122);
+}
+
+h5,
+.p1 {
+    text-align: center;
+}
+
+.col-6 h6,
+h5,
+p,
+.p1 {
+    font-weight: 700;
+}
+
+.card,
+#terkep {
+    border: 2px solid transparent;
+    border-radius: 24px;
+    background:
+        linear-gradient(rgb(255, 255, 255),
+            rgb(255, 255, 255)) padding-box,
+        linear-gradient(135deg,
+            rgb(28, 58, 128),
+            rgb(162, 116, 232)) border-box;
+}
+
+#terkep {
+    width: 100%;
+    height: 350px;
+}
 .table-responsive {
+    display: block;
+    width: 100%;
+    max-width: 100%;
     background-color: rgb(255, 255, 255);
     border: 1px solid rgb(218, 225, 237);
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(28, 58, 128, 0.06);
-    overflow: auto;
+    overflow: hidden !important;
+}
+
+.table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 0;
+    table-layout: fixed;
+    border-collapse: collapse;
 }
 
 .table thead th {
     background-color: rgb(28, 58, 128);
     color: rgb(255, 255, 255);
-    padding: 12px 16px;
-     font-weight: 700; 
-    
+    padding: 12px 8px;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+    word-break: normal;
 }
 
 .table tbody td {
-    padding: 12px 16px;
+    padding: 12px 8px;
+    overflow-wrap: anywhere;
+    word-break: normal;
+    vertical-align: middle;
 }
 
 .table tbody tr:hover td {
     background-color: rgb(235, 238, 243);
 }
 
-.card, #terkep {
-    border: 2px solid transparent;
-    border-radius: 24px;
-    background: linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)) padding-box,
-                linear-gradient(135deg, rgb(28, 58, 128), rgb(162, 116, 232)) border-box;
-
-}
-
 .narancssarga {
     background-color: #fd7e14 !important;
+}
+
+.bi-trash3-fill,
+.bi-pencil-fill {
+    cursor: pointer;
+}
+
+footer {
+    padding: 16px 10px;
+    text-align: center;
+}
+
+@media (max-width: 991.98px) {
+
+    .table thead th,
+    .table tbody td {
+        padding: 8px 5px;
+    }
+
+    .table {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .table {
+        font-size: 10px;
+    }
+
+    .table thead th {
+        padding: 6px 3px;
+        font-size: 9px;
+    }
+
+    .table tbody td {
+        padding: 6px 3px;
+    }
+
+    .table .progress {
+        width: 100%;
+        min-width: 0;
+        height: 14px;
+    }
+
+    .table .progress-bar {
+        font-size: 8px;
+        line-height: 14px;
+    }
+
+    .table .bi-trash3-fill,
+    .table .bi-pencil-fill {
+        font-size: 12px;
+    }
+
+    .table .bi-pencil-fill {
+        margin-left: 4px !important;
+    }
+
+    #terkep {
+        width: 100%;
+        height: 300px;
+    }
+
+    .d-flex.flex-wrap {
+        gap: 8px;
+    }
 }
