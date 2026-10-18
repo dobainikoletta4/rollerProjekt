@@ -34,7 +34,44 @@ function terkepInditasa() {
 }
 
 
-function terkepKiir() {
+
+var helyCache = {};
+
+async function korzetHelye(korzet) {
+    // Ha a körzet már szerepel az objektumban
+    if (korzetek[korzet]) {
+        return korzetek[korzet];
+    }
+
+    // Ha korábban már megkerestük a helyet
+    if (helyCache[korzet]) {
+        return helyCache[korzet];
+    }
+
+    try {
+        var url = "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&q="
+            + encodeURIComponent(korzet + ", Budapest, Hungary");
+
+        var valasz = await fetch(url);
+        var adatok = await valasz.json();
+
+        if (adatok.length > 0) {
+            var hely = [
+                Number(adatok[0].lat),
+                Number(adatok[0].lon)
+            ];
+
+            helyCache[korzet] = hely;
+            return hely;
+        }
+    } catch (hiba) {
+        console.error("A körzet keresése sikertelen:", hiba);
+    }
+
+    return null;
+}
+
+async function terkepKiir() {
     if (!markerek) return;
 
     markerek.clearLayers();
@@ -45,7 +82,13 @@ function terkepKiir() {
     for (var i = 0; i < rollerek.length; i++) {
         var roller = rollerek[i];
         var korzet = roller.getKorzet();
-        var hely = korzetek[korzet] || [47.4979, 19.0402];
+
+        var hely = await korzetHelye(korzet);
+
+        if (hely === null) {
+            console.warn("Nem található ilyen körzet:", korzet);
+            continue;
+        }
 
         var index = darabok[korzet] || 0;
         darabok[korzet] = index + 1;
@@ -95,12 +138,13 @@ function terkepKiir() {
             <b>Modell:</b> ${roller.getModell()}<br>
             <b>Töltöttség:</b> ${roller.getToltottseg()}%<br>
             <b>Állapot:</b> ${roller.getAllapot()}<br>
-            <b>Hely:</b> ${roller.getKorzet()}
+            <b>Hely:</b> ${korzet}
         `);
 
         markerek.addLayer(marker);
     }
 }
+
 //
 
 function statisztikaKiir() {
